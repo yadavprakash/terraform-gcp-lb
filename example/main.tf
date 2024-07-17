@@ -8,7 +8,7 @@ provider "google" {
 ##### vpc module call.
 #####==============================================================================
 module "vpc" {
-  source                                    = "git::git@github.com:opsstation/terraform-gcp-vpc.git?ref=v1.0.0"
+  source                                    = "git::git@github.com:yadavprakash/terraform-gcp-vpc.git?ref=v1.0.0"
   name                                      = "dev"
   environment                               = "test"
   routing_mode                              = "REGIONAL"
@@ -19,7 +19,7 @@ module "vpc" {
 ##### subnet module call.
 #####==============================================================================
 module "subnet" {
-  source        = "git::git@github.com:opsstation/terraform-gcp-subnet.git?ref=v1.0.0"
+  source        = "git::git@github.com:yadavprakash/terraform-gcp-subnet.git?ref=v1.0.0"
   name          = "dev"
   environment   = "test"
   subnet_names  = ["dev-subnet-a"]
@@ -32,7 +32,7 @@ module "subnet" {
 ##### firewall module call.
 #####==============================================================================
 module "firewall" {
-  source        = "git::git@github.com:opsstation/terraform-gcp-firewall.git?ref=v1.0.0"
+  source        = "git::git@github.com:yadavprakash/terraform-gcp-firewall.git?ref=v1.0.0"
   name          = "dev"
   environment   = "test"
   network       = module.vpc.vpc_id
@@ -49,7 +49,7 @@ module "firewall" {
 ##### instance_template module call.
 #####==============================================================================
 module "instance_template" {
-  source               = "git::git@github.com:opsstation/terraform-gcp-vm-template-instance.git?ref=v1.0.0"
+  source               = "git::git@github.com:yadavprakash/terraform-gcp-vm-template-instance.git?ref=v1.0.0"
   name                 = "dev-template"
   environment          = "test"
   region               = "asia-northeast1"
@@ -73,7 +73,7 @@ module "instance_template" {
 ##### instance_group module call.
 #####==============================================================================
 module "instance_group" {
-  source              = "git::git@github.com:opsstation/terraform-gcp-instance-group.git?ref=v1.0.0"
+  source              = "git::git@github.com:yadavprakash/terraform-gcp-instance-group.git?ref=v1.0.0"
   region              = "asia-northeast1"
   hostname            = "dev-test"
   autoscaling_enabled = true
@@ -107,3 +107,4 @@ module "load_balancer" {
   health_check            = local.health_check
   target_service_accounts = []
 }
+
